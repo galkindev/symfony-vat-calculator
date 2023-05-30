@@ -1,0 +1,21 @@
+Type;Calculation based on;VAT rate;VAT amount;Final amount;Date and time
+Remove VAT from the price;430;20;71.67;358.33;2023-05-26 10:00:00
+Remove VAT from the price;840;20;140;700;2023-05-26 10:00:00
+Add VAT to the price;690;20;138;828;2023-05-26 10:00:00
+Add VAT to the price;380;5;19;399;2023-05-26 10:00:00
+Add VAT to the price;850;5;42.5;892.5;2023-05-26 10:00:00
+Add VAT to the price;690;20;138;828;2023-05-26 10:00:00
+Add VAT to the price;1000;20;200;1200;2023-05-26 10:00:00
+Add VAT to the price;120;5;6;126;2023-05-26 10:00:00
+Remove VAT from the price;590;20;98.33;491.67;2023-05-26 10:00:00
+Remove VAT from the price;940;5;44.76;895.24;2023-05-26 10:00:00
+Remove VAT from the price;1000;5;47.62;952.38;2023-05-26 10:00:00
+Add VAT to the price;620;5;31;651;2023-05-26 10:00:00
+Remove VAT from the price;840;20;140;700;2023-05-26 10:00:00
+Remove VAT from the price;950;20;158.33;791.67;2023-05-26 10:00:00
+Remove VAT from the price;540;20;90;450;2023-05-26 10:00:00
+Add VAT to the price;130;5;6.5;136.5;2023-05-26 10:00:00
+Add VAT to the price;130;5;6.5;136.5;2023-05-26 10:00:00
+Remove VAT from the price;670;5;31.9;638.1;2023-05-26 10:00:00
+Remove VAT from the price;390;5;18.57;371.43;2023-05-26 10:00:00
+Add VAT to the price;590;20;118;708;2023-05-26 10:00:00

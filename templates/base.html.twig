@@ -2,18 +2,24 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        <title>{% block title %}VAT CALCULATOR{% endblock %}</title>
         {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
+            {{ encore_entry_link_tags('css/app') }}
         {% endblock %}
 
         {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
+            {{ encore_entry_script_tags('js/app') }}
         {% endblock %}
     </head>
     <body>
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+            <div class="container">
+                <ul class="nav nav-pills">
+                    <li class="nav-item"><a href="{{ path('app_calculate') }}" class="nav-link {% if app.request.get('_route') in ['app_calculate', 'app_show_calculation_item'] %}active{% endif %}">VAT calculator</a></li>
+                    <li class="nav-item"><a href="{{ path('app_show_calculation_history') }}" class="nav-link {% if app.request.get('_route') == 'app_show_calculation_history' %}active{% endif %}">Calculation history</a></li>
+                </ul>
+            </div>
+        </header>
         {% block body %}{% endblock %}
     </body>
 </html>

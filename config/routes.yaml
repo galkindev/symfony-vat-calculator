@@ -1,5 +1,18 @@
-controllers:
-    resource:
-        path: ../src/Controller/
-        namespace: App\Controller
-    type: attribute
+app_calculate:
+    path: /
+    controller: App\Controller\CalculateVATController
+app_show_calculation_item:
+    path: /calculations/show/{id}
+    controller: App\Controller\ShowCalculationItemController
+app_show_calculation_history:
+    path: /calculations/history
+    controller: App\Controller\ShowCalculationHistoryController
+app_export_calculation_history_to_csv:
+    path: /calculations/history/export/csv
+    controller: App\Controller\ExportCalculationHistoryController
+app_delete_calculation_item:
+    path: /calculations/delete/{id}
+    controller: App\Controller\DeleteCalculationItemController
+app_clear_calculation_history:
+    path: /calculations/history/clear
+    controller: App\Controller\ClearCalculationHistoryController

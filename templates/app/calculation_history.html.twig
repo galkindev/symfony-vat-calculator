@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h3>Calculation history</h3>
+        <div class="col-sm-9 col-md-9 col-lg-5">
+            {% for flashMessage in app.flashes('info') %}
+                <div class="alert alert-success">
+                    <p>{{ flashMessage }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <a href="{{ path('app_clear_calculation_history') }}" class="btn btn-danger" id="js-clear-calculation-history">Clear history</a>
+        <a href="{{ path('app_export_calculation_history_to_csv') }}" class="btn btn-success float-end">Export to CSV</a>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Type</th>
+                    <th scope="col">Calculation based on</th>
+                    <th scope="col">VAT rate</th>
+                    <th scope="col">VAT amount</th>
+                    <th scope="col">Final amount</th>
+                    <th scope="col">Date and time</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for item in items %}
+                <tr>
+                    <th>{{ item.typeDescription }}</th>
+                    <td>{{ item.amount }}</td>
+                    <td>{{ item.rate }}</td>
+                    <td>{{ item.calculatedVatAmount }}</td>
+                    <td>{{ item.calculatedAmount }}</td>
+                    <td>{{ item.initDate }}</td>
+                    <td>
+                        <a href="{{ path('app_delete_calculation_item', {id: item.id}) }}" class="delete-calculation-button">
+                            <i class="bi bi-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        {% if totalPages > 1 %}
+        <nav>
+            <ul class="pagination">
+                {% if currentPage > 1 %}
+                    <li class="page-item">
+                        <a class="page-link" href="{{ path('app_show_calculation_history', {'page': currentPage - 1}) }}">Previous</a>
+                    </li>
+                {% endif %}
+
+                {% for page in 1..totalPages %}
+                    <li class="page-item {% if page == currentPage %}active{% endif %}" aria-current="page">
+                        <a class="page-link" href="{{ path('app_show_calculation_history', {'page': page}) }}">{{ page }}</a>
+                    </li>
+                {% endfor %}
+
+                {% if currentPage < totalPages %}
+                    <li class="page-item">
+                        <a class="page-link" href="{{ path('app_show_calculation_history', {'page': currentPage + 1}) }}">Next</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+        {% endif %}
+    </div>
+{% endblock body %}

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h3>VAT calculator</h3>
+        {{ form_start(form, {'action': path('app_calculate'), 'method': 'POST'}) }}
+        <div class="col-sm-6 col-md-5 col-lg-4">
+            {{ form_errors(form) }}
+        </div>
+        <div class="col-sm-6 col-md-5 col-lg-4">
+            <div class="form-group">
+                {{ form_label(form.rate) }}
+                {{ form_widget(form.rate) }}
+            </div>
+            <div class="form-error">
+                {{ form_errors(form.rate) }}
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-5 col-lg-4 mt-2">
+            <div class="form-group">
+                {{ form_label(form.amount) }}
+                {{ form_widget(form.amount) }}
+            </div>
+            <div class="form-error">
+                {{ form_errors(form.amount) }}
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-5 col-lg-4 mt-2">
+            <div class="form-group">
+                {{ form_widget(form.type) }}
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-sm-6 col-md-5 col-lg-4">
+                <button type="submit" class="btn btn-success">Calculate</button>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock body %}

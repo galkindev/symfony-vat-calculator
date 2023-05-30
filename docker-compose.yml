@@ -1,21 +1,36 @@
 version: '3'
 
 services:
-###> doctrine/doctrine-bundle ###
-  database:
-    image: postgres:${POSTGRES_VERSION:-15}-alpine
-    environment:
-      POSTGRES_DB: ${POSTGRES_DB:-app}
-      # You should definitely change the password in production
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
-      POSTGRES_USER: ${POSTGRES_USER:-app}
+  app:
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+    depends_on:
+      - db
     volumes:
-      - database_data:/var/lib/postgresql/data:rw
-      # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
-      # - ./docker/db/data:/var/lib/postgresql/data:rw
-###< doctrine/doctrine-bundle ###
+      - ./:/var/www/app
+      - ./docker/php/logs:/app/var/logs:rw
 
-volumes:
-###> doctrine/doctrine-bundle ###
-  database_data:
-###< doctrine/doctrine-bundle ###
+  db:
+    image: mariadb:10.11.3
+    ports:
+      - '3306:3306'
+    environment:
+      MARIADB_ROOT_PASSWORD: secret
+      MARIADB_DATABASE: symfony_vat_calculator
+    volumes:
+      - ./docker/db/config:/etc/mysql/conf.d:ro
+      - ./docker/db/data/:/var/lib/mysql:rw
+      - ./docker/db/log/:/var/log/mysql:rw
+    restart: always
+
+  nginx:
+    image: nginx
+    ports:
+      - '8000:80'
+    volumes:
+      - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./:/var/www/app
+      - ./docker/nginx/logs:/var/log/nginx
+    depends_on:
+      - app
