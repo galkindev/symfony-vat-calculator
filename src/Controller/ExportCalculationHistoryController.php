@@ -5,17 +5,17 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Export\CalculationHistoryExporterInterface;
-use App\Repository\CalculationItemRepository;
+use App\Repository\CalculationItemRepositoryInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
 final class ExportCalculationHistoryController extends AbstractController
 {
-    private CalculationItemRepository $calculationItemRepository;
+    private CalculationItemRepositoryInterface $calculationItemRepository;
     private CalculationHistoryExporterInterface $calculationHistoryExporter;
 
     public function __construct(
-        CalculationItemRepository       $calculationItemRepository,
+        CalculationItemRepositoryInterface  $calculationItemRepository,
         CalculationHistoryExporterInterface $calculationHistoryExporter
     )
     {

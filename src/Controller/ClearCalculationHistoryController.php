@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Repository\CalculationItemRepository;
+use App\Repository\CalculationItemRepositoryInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 final class ClearCalculationHistoryController extends AbstractController
 {
-    private CalculationItemRepository $calculationItemRepository;
+    private CalculationItemRepositoryInterface $calculationItemRepository;
 
-    public function __construct(CalculationItemRepository $calculationItemRepository)
+    public function __construct(CalculationItemRepositoryInterface $calculationItemRepository)
     {
         $this->calculationItemRepository = $calculationItemRepository;
     }

@@ -5,24 +5,24 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use DateTime;
+use App\Repository\CalculationItemRepositoryInterface;
 use App\Calculator\VATCalculatorFactory;
 use App\Exception\UnknownCalculationType;
 use App\Entity\CalculationItem;
 use App\Form\CalculateVATFormData;
 use App\Form\CalculateVATFormType;
-use App\Repository\CalculationItemRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 final class CalculateVATController extends AbstractController
 {
-    private CalculationItemRepository $calculationItemRepository;
+    private CalculationItemRepositoryInterface $calculationItemRepository;
     private VATCalculatorFactory $calculatorFactory;
 
     public function __construct(
-        CalculationItemRepository $calculationItemRepository,
-        VATCalculatorFactory      $calculatorFactory
+        CalculationItemRepositoryInterface $calculationItemRepository,
+        VATCalculatorFactory               $calculatorFactory
     )
     {
         $this->calculationItemRepository = $calculationItemRepository;
