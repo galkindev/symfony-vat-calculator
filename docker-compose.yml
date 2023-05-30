@@ -22,7 +22,6 @@ services:
       - ./docker/db/config:/etc/mysql/conf.d:ro
       - ./docker/db/data/:/var/lib/mysql:rw
       - ./docker/db/log/:/var/log/mysql:rw
-    restart: always
 
   nginx:
     image: nginx
