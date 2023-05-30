@@ -22,6 +22,13 @@ final class DeleteCalculationItemController extends AbstractController
 
     public function __invoke(Request $request, int $id): Response
     {
+        $csrfToken = $request->get('token');
+
+        if (!$this->isCsrfTokenValid('delete-calculation-item', $csrfToken)) {
+            $request->getSession()->getFlashBag()->add('error', 'An error occurred while executing the request');
+            return $this->redirectToRoute('app_show_calculation_history');
+        }
+
         $calculationItem = $this->calculationItemRepository->find($id);
 
         if (!$calculationItem instanceof CalculationItem) {

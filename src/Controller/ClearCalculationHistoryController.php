@@ -20,6 +20,13 @@ final class ClearCalculationHistoryController extends AbstractController
 
     public function __invoke(Request $request): Response
     {
+        $csrfToken = $request->get('token');
+
+        if (!$this->isCsrfTokenValid('clear-calculation-history', $csrfToken)) {
+            $request->getSession()->getFlashBag()->add('error', 'An error occurred while executing the request');
+            return $this->redirectToRoute('app_show_calculation_history');
+        }
+
         $calculationItemList = $this->calculationItemRepository->findAll();
 
         if (empty($calculationItemList)) {
