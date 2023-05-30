@@ -18,6 +18,6 @@ class DeleteCalculationItemControllerTest extends WebTestCase
 
         $client->followRedirect();
 
-        $this->assertSelectorTextContains('body', 'Calculation history item with ID = 1 was successfully removed');
+        $this->assertSelectorTextContains('body', 'Calculation history item with ID = 1 was successfully deleted');
     }
 }
