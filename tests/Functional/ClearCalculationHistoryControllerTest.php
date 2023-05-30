@@ -12,7 +12,10 @@ class ClearCalculationHistoryControllerTest extends WebTestCase
     public function testDeleteCalculationItemIsSuccessful(): void
     {
         $client = static::createClient();
-        $client->request(Request::METHOD_GET, '/calculations/history/clear');
+        $crawler = $client->request(Request::METHOD_GET, '/calculations/history');
+
+        $link = $crawler->filter('a[id="js-clear-calculation-history"]')->attr('href');
+        $client->request('GET', $link);
 
         $this->assertResponseRedirects('/calculations/history');
 

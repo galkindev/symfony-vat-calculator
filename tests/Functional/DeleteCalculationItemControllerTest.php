@@ -12,7 +12,10 @@ class DeleteCalculationItemControllerTest extends WebTestCase
     public function testDeleteCalculationItemIsSuccessful(): void
     {
         $client = static::createClient();
-        $client->request(Request::METHOD_GET, '/calculations/delete/1');
+        $crawler = $client->request(Request::METHOD_GET, '/calculations/history');
+
+        $link = $crawler->filter('a[class="delete-calculation-button"]')->first()->attr('href');
+        $client->request('GET', $link);
 
         $this->assertResponseRedirects('/calculations/history');
 

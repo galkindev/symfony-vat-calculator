@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Functional;
 
 use App\Entity\CalculationItem;
+use App\Helpers\TypeDictionary;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -24,7 +25,7 @@ class ShowCalculationItemControllerTest extends WebTestCase
 
         $calculationItemData = $crawler->filter('ul')->eq(1)->text();
 
-        $this->assertStringContainsString('Remove VAT from the price', $calculationItemData);
+        $this->assertStringContainsString(TypeDictionary::getDescription($calculationItem->getType()), $calculationItemData);
         $this->assertStringContainsString('Calculation based on: ' . $calculationItem->getAmount(), $calculationItemData);
         $this->assertStringContainsString('VAT rate: ' . $calculationItem->getRate(), $calculationItemData);
         $this->assertStringContainsString('VAT amount: ' . $calculationItem->getCalculatedVatAmount(), $calculationItemData);
