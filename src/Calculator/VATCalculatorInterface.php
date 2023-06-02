@@ -6,5 +6,5 @@ namespace App\Calculator;
 
 interface VATCalculatorInterface
 {
-    public function calculate($amount, $rate): float;
+    public function calculate(float $amount, float $rate): float;
 }
