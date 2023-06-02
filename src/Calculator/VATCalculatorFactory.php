@@ -14,13 +14,10 @@ class VATCalculatorFactory
      */
     public function create(int $type): VATCalculatorInterface
     {
-        switch ($type) {
-            case TypeDictionary::REMOVE_VAT_FROM_THE_PRICE:
-                return new RemoveVATCalculator();
-            case TypeDictionary::ADD_VAT_TO_THE_PRICE:
-                return new AddVATCalculator();
-            default:
-                throw new UnknownCalculationType();
-        }
+        return match ($type) {
+            TypeDictionary::REMOVE_VAT_FROM_THE_PRICE => new RemoveVATCalculator(),
+            TypeDictionary::ADD_VAT_TO_THE_PRICE => new AddVATCalculator(),
+            default => throw new UnknownCalculationType(),
+        };
     }
 }

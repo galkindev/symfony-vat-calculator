@@ -11,15 +11,12 @@ final class TypeDictionary
     const REMOVE_VAT_FROM_THE_PRICE = 1;
     const ADD_VAT_TO_THE_PRICE = 2;
 
-    public static function getDescription($type): string
+    public static function getDescription(int $type): string
     {
-        switch ($type) {
-            case self::REMOVE_VAT_FROM_THE_PRICE:
-                return 'Remove VAT from the price';
-            case self::ADD_VAT_TO_THE_PRICE:
-                return 'Add VAT to the price';
-            default:
-                throw new BadMethodCallException();
-        }
+        return match ($type) {
+            self::REMOVE_VAT_FROM_THE_PRICE => 'Remove VAT from the price',
+            self::ADD_VAT_TO_THE_PRICE => 'Add VAT to the price',
+            default => throw new BadMethodCallException(),
+        };
     }
 }
