@@ -8,7 +8,7 @@ use DateTime;
 
 use App\Entity\CalculationItem;
 use App\Export\CSVCalculationHistoryExporter;
-use App\Helpers\TypeDictionary;
+use App\Helpers\CalculationTypeDictionary;
 use PHPUnit\Framework\TestCase;
 
 class CSVCalculationHistoryExporterTest extends TestCase
@@ -18,7 +18,7 @@ class CSVCalculationHistoryExporterTest extends TestCase
         $calculationItem = new CalculationItem();
         $calculationItem->setAmount(100);
         $calculationItem->setRate(20);
-        $calculationItem->setType(TypeDictionary::REMOVE_VAT_FROM_THE_PRICE);
+        $calculationItem->setType(CalculationTypeDictionary::REMOVE_VAT_FROM_THE_PRICE);
         $calculationItem->setCalculatedAmount(83.33);
         $calculationItem->setInitDate(new DateTime('2023-05-26 10:00:00'));
 

@@ -7,7 +7,7 @@ namespace App\Tests\Unit\Calculator;
 use App\Calculator\VATCalculatorFactory;
 use App\Calculator\VATCalculatorInterface;
 use App\Exception\UnknownCalculationTypeException;
-use App\Helpers\TypeDictionary;
+use App\Helpers\CalculationTypeDictionary;
 use PHPUnit\Framework\TestCase;
 
 class VATCalculatorFactoryTest extends TestCase
@@ -24,10 +24,10 @@ class VATCalculatorFactoryTest extends TestCase
      */
     public function testCalculatorObjectIsCreated(): void
     {
-        $calculator = $this->calculatorFactory->create(TypeDictionary::REMOVE_VAT_FROM_THE_PRICE);
+        $calculator = $this->calculatorFactory->create(CalculationTypeDictionary::REMOVE_VAT_FROM_THE_PRICE);
         $this->assertInstanceOf(VATCalculatorInterface::class, $calculator);
 
-        $calculator = $this->calculatorFactory->create(TypeDictionary::ADD_VAT_TO_THE_PRICE);
+        $calculator = $this->calculatorFactory->create(CalculationTypeDictionary::ADD_VAT_TO_THE_PRICE);
         $this->assertInstanceOf(VATCalculatorInterface::class, $calculator);
     }
 
