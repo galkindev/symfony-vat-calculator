@@ -6,7 +6,7 @@ namespace App\Helpers;
 
 use App\Exception\UnknownCalculationTypeException;
 
-final class TypeDictionary
+final class CalculationTypeDictionary
 {
     const REMOVE_VAT_FROM_THE_PRICE = 1;
     const ADD_VAT_TO_THE_PRICE = 2;

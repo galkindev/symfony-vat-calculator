@@ -4,10 +4,10 @@ namespace App\DataFixtures;
 
 use DateTime;
 
+use App\Exception\UnknownCalculationTypeException;
 use App\Calculator\VATCalculatorFactory;
-use App\Exception\UnknownCalculationType;
 use App\Entity\CalculationItem;
-use App\Helpers\TypeDictionary;
+use App\Helpers\CalculationTypeDictionary;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
@@ -21,14 +21,14 @@ final class CalculationItemFixture extends Fixture
     }
 
     /**
-     * @throws UnknownCalculationType
+     * @throws UnknownCalculationTypeException
      */
     public function load(ObjectManager $manager): void
     {
         for ($i = 0; $i < 20; $i++) {
             $calculationTypes = [
-                TypeDictionary::REMOVE_VAT_FROM_THE_PRICE,
-                TypeDictionary::ADD_VAT_TO_THE_PRICE
+                CalculationTypeDictionary::REMOVE_VAT_FROM_THE_PRICE,
+                CalculationTypeDictionary::ADD_VAT_TO_THE_PRICE
             ];
 
             $rates = [5, 20];

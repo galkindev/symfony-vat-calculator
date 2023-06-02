@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Form;
 
-use App\Helpers\TypeDictionary;
+use App\Helpers\CalculationTypeDictionary;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -33,8 +33,8 @@ class CalculateVATFormType extends AbstractType
             ])
             ->add('type', ChoiceType::class, [
                 'choices' => [
-                    'Remove VAT from the price' => TypeDictionary::REMOVE_VAT_FROM_THE_PRICE,
-                    'Add VAT to the price' => TypeDictionary::ADD_VAT_TO_THE_PRICE,
+                    'Remove VAT from the price' => CalculationTypeDictionary::REMOVE_VAT_FROM_THE_PRICE,
+                    'Add VAT to the price' => CalculationTypeDictionary::ADD_VAT_TO_THE_PRICE,
                 ],
             ]);
     }

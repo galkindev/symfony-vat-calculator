@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Calculator;
 
 use App\Exception\UnknownCalculationTypeException;
-use App\Helpers\TypeDictionary;
+use App\Helpers\CalculationTypeDictionary;
 
 class VATCalculatorFactory
 {
@@ -15,8 +15,8 @@ class VATCalculatorFactory
     public function create(int $type): VATCalculatorInterface
     {
         return match ($type) {
-            TypeDictionary::REMOVE_VAT_FROM_THE_PRICE => new RemoveVATCalculator(),
-            TypeDictionary::ADD_VAT_TO_THE_PRICE => new AddVATCalculator(),
+            CalculationTypeDictionary::REMOVE_VAT_FROM_THE_PRICE => new RemoveVATCalculator(),
+            CalculationTypeDictionary::ADD_VAT_TO_THE_PRICE => new AddVATCalculator(),
             default => throw new UnknownCalculationTypeException(),
         };
     }

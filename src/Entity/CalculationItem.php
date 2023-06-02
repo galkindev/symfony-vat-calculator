@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use App\Helpers\TypeDictionary;
+use App\Helpers\CalculationTypeDictionary;
 use App\Repository\CalculationItemRepository;
 use DateTimeInterface;
 use Doctrine\DBAL\Types\Types;
@@ -102,6 +102,6 @@ class CalculationItem
 
     public function getTypeDescription(): string
     {
-        return TypeDictionary::getDescription($this->type);
+        return CalculationTypeDictionary::getDescription($this->type);
     }
 }
