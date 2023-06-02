@@ -30,7 +30,7 @@ final class ShowCalculationHistoryController extends AbstractController
 
         $items = $this->calculationItemRepository->getCalculationItemsList($offset, $limit);
 
-        return $this->render('app/calculation_history.html.twig', [
+        return $this->render('app/show_calculation_history.html.twig', [
             'items' => $items,
             'totalItems' => $totalItems,
             'totalPages' => $totalPages,

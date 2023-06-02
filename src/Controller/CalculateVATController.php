@@ -7,7 +7,7 @@ namespace App\Controller;
 use DateTime;
 use App\Repository\CalculationItemRepositoryInterface;
 use App\Calculator\VATCalculatorFactory;
-use App\Exception\UnknownCalculationType;
+use App\Exception\UnknownCalculationTypeException;
 use App\Entity\CalculationItem;
 use App\Form\CalculateVATFormData;
 use App\Form\CalculateVATFormType;
@@ -30,7 +30,7 @@ final class CalculateVATController extends AbstractController
     }
 
     /**
-     * @throws UnknownCalculationType
+     * @throws UnknownCalculationTypeException
      */
     public function __invoke(Request $request): Response
     {
@@ -55,7 +55,7 @@ final class CalculateVATController extends AbstractController
             return $this->redirectToRoute('app_show_calculation_item', ['id' => $calculationItem->getId()]);
         }
 
-        return $this->render('app/calculate.html.twig', [
+        return $this->render('app/calculate_vat.html.twig', [
             'form' => $form,
         ]);
     }
