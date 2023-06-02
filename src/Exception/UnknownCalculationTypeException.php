@@ -6,6 +6,6 @@ namespace App\Exception;
 
 use Exception;
 
-class UnknownCalculationType extends Exception
+class UnknownCalculationTypeException extends Exception
 {
 }

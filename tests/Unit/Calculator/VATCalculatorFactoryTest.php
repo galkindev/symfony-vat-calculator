@@ -6,7 +6,7 @@ namespace App\Tests\Unit\Calculator;
 
 use App\Calculator\VATCalculatorFactory;
 use App\Calculator\VATCalculatorInterface;
-use App\Exception\UnknownCalculationType;
+use App\Exception\UnknownCalculationTypeException;
 use App\Helpers\TypeDictionary;
 use PHPUnit\Framework\TestCase;
 
@@ -20,7 +20,7 @@ class VATCalculatorFactoryTest extends TestCase
     }
 
     /**
-     * @throws UnknownCalculationType
+     * @throws UnknownCalculationTypeException
      */
     public function testCalculatorObjectIsCreated(): void
     {
@@ -33,7 +33,7 @@ class VATCalculatorFactoryTest extends TestCase
 
     public function testUnknownCalculationTypeThrowsException()
     {
-        $this->expectException(UnknownCalculationType::class);
+        $this->expectException(UnknownCalculationTypeException::class);
         $this->calculatorFactory->create(100);
     }
 }
