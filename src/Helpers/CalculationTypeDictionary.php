@@ -8,8 +8,8 @@ use App\Exception\UnknownCalculationTypeException;
 
 final class CalculationTypeDictionary
 {
-    const REMOVE_VAT_FROM_THE_PRICE = 1;
-    const ADD_VAT_TO_THE_PRICE = 2;
+    public const REMOVE_VAT_FROM_THE_PRICE = 1;
+    public const ADD_VAT_TO_THE_PRICE = 2;
 
     /**
      * @throws UnknownCalculationTypeException
