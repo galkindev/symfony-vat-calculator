@@ -29,6 +29,9 @@
             <div class="form-group">
                 {{ form_widget(form.type) }}
             </div>
+            <div class="form-error">
+                {{ form_errors(form.type) }}
+            </div>
         </div>
         <div class="row mt-2">
             <div class="col-sm-6 col-md-5 col-lg-4">
