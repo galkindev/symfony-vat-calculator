@@ -15,7 +15,7 @@
                 </div>
             {% endfor %}
         </div>
-        <a href="{{ path('app_clear_calculation_history', {token: csrf_token('clear-calculation-history')}) }}" class="btn btn-danger" id="js-clear-calculation-history">Clear history</a>
+        <a href="{{ path('app_clear_calculation_history', {token: csrf_token('clear-calculation-history')}) }}" data-message="Are you sure you want to clear calculation history?" class="btn btn-danger" id="js-clear-calculation-history">Clear history</a>
         <a href="{{ path('app_export_calculation_history_to_csv') }}" class="btn btn-success float-end">Export to CSV</a>
         <table class="table table-hover">
             <thead>
@@ -39,7 +39,7 @@
                     <td>{{ item.calculatedAmount }}</td>
                     <td>{{ item.initDate }}</td>
                     <td>
-                        <a href="{{ path('app_delete_calculation_item', {id: item.id, token: csrf_token('delete-calculation-item')}) }}" class="delete-calculation-button">
+                        <a href="{{ path('app_delete_calculation_item', {id: item.id, token: csrf_token('delete-calculation-item')}) }}" data-message="Are you sure you want to delete this calculation item?" class="delete-calculation-item">
                             <i class="bi bi-trash"></i>
                         </a>
                     </td>

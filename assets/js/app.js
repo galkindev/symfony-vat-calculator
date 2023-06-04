@@ -5,24 +5,21 @@
  * (and its CSS file) in your base layout (base.html.twig).
  */
 
-const calculationItems = document.getElementsByClassName('delete-calculation-button');
+function handleDeleteAction(event) {
+    event.preventDefault();
 
-for (let i = 0, l = calculationItems.length; i < l; i++) {
-    calculationItems[i].addEventListener('click', function (event) {
-        event.preventDefault();
+    let message = this.getAttribute('data-message');
 
-        if (confirm('Are you sure you want to delete this calculation item?')) {
-            window.location.href = this.getAttribute('href');
-        }
-    });
+    if (confirm(message)) {
+        window.location.href = this.getAttribute('href');
+    }
+}
+
+const calculationItems = document.getElementsByClassName('delete-calculation-item');
+
+for (let i = 0; i < calculationItems.length; i++) {
+    calculationItems[i].addEventListener('click', handleDeleteAction);
 }
 
 const clearCalculationHistoryElement = document.getElementById('js-clear-calculation-history');
-
-clearCalculationHistoryElement.addEventListener('click', function (event) {
-    event.preventDefault();
-
-    if (confirm('Are you sure you want to clear calculation history?')) {
-        window.location.href = this.getAttribute('href');
-    }
-});
+clearCalculationHistoryElement.addEventListener('click', handleDeleteAction);
